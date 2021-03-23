@@ -18,11 +18,11 @@
     <string name="welcome_message">Welcome and top of the morning!</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
-    <string name="choose_flavor">Choose Flavor</string>
-    <string name="vanilla">Vanilla</string>
-    <string name="chocolate">Chocolate</string>
-    <string name="red_velvet">Red Velvet</string>
-    <string name="salted_caramel">Salted Caramel</string>
+    <string name="user">Logged in user</string>
+    <string name="cancel_login">Cancel Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="cancel_signup">Cancel Signup</string>
+    <string name="your_email">email</string>
     <string name="coffee">Coffee</string>
     <string name="special_flavor">Special Flavor</string>
     <string name="cancel">Cancel</string>

@@ -21,49 +21,41 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.amassistant.databinding.FragmentSignupBinding
+import com.example.amassistant.databinding.FragmentUserBinding
 
-/**
- */
-class SignupFragment : Fragment() {
+/***/
+class UserFragment : Fragment() {
 
-    // Binding object instance corresponding to the fragment_signup.xml layout
+    // Binding object instance corresponding to the fragment_user.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
-    private var binding: FragmentSignupBinding? = null
+    private var binding: FragmentUserBinding? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentSignupBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentUserBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        return binding!!.root
+        return fragmentBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.apply {
-            // Specify the fragment as the lifecycle owner
-            lifecycleOwner = viewLifecycleOwner
-            // Assign the fragment
-            signupFragment = this@SignupFragment
-        }
+        binding?.userFragment = this
     }
 
-    /**
-     */
-    fun cancelSignup() {
-        // Navigate to home screen
-        findNavController().navigate(R.id.action_signUp_to_startFragment)
+    fun logOut() {
+        //Logout logic here
+        // Navigate to login screen
+        findNavController().navigate(R.id.action_user_to_loginFragment)
     }
 
-    fun createAccount() {
-        //Account creation logic here
-
-        // Navigate to home screen after submission of account creation details
-        findNavController().navigate(R.id.action_signUp_to_startFragment)
+    fun logOutGoHome() {
+        //Logout logic here
+        // Navigate to start screen
+        findNavController().navigate(R.id.action_user_to_startFragment)
     }
 
     /**

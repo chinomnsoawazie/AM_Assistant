@@ -16,26 +16,25 @@
 package com.example.amassistant
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.amassistant.databinding.FragmentLoginBinding
-import com.example.amassistant.model.OrderViewModel
 
 /**
  */
 class LoginFragment : Fragment() {
 
-    // Binding object instance corresponding to the fragment_flavor.xml layout
+    // Binding object instance corresponding to the fragment_login.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
-    private var binding: FragmentLoginBinding? = null
+    private lateinit var binding: FragmentLoginBinding
 
-    // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
-    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,30 +48,31 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.apply {
-            // Specify the fragment as the lifecycle owner
-            lifecycleOwner = viewLifecycleOwner
+        binding.loginViewModel  = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.loginFragment = this
+        binding.login.setOnClickListener{goToUserPage()}
 
 
-            // Assign the fragment
-            loginFragment = this@LoginFragment
-        }
     }
 
     /**
-     * Navigate to the next screen to choose pickup date.
+     * Navigate back to start screen.
      */
-    fun goToNextScreen() {
-        findNavController().navigate(R.id.action_loginFragment_to_startFragment)
+    fun goToUserPage() {
+        val userName = binding.username.text.toString()
+        val password = binding.password.text.toString()
+        Log.d("UserInfo", "Email: ${userName}" + "Password: ${password}")
+        //logic for login here
+
+        //navigate to user screen on successful login
+        findNavController().navigate(R.id.action_loginFragment_to_userFragment)
     }
 
     /**
-     * Cancel the order and start over.
+     * Cancel the login and start over.
      */
-    fun cancelOrder() {
-        // Reset order in view model
-        sharedViewModel.resetOrder()
-
+    fun cancelLogin() {
         // Navigate back to the [StartFragment] to start over
         findNavController().navigate(R.id.action_loginFragment_to_startFragment)
     }
@@ -83,6 +83,6 @@ class LoginFragment : Fragment() {
      */
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+//        binding = null
     }
 }

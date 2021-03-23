@@ -25,9 +25,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.amassistant.databinding.FragmentStartBinding
 import com.example.amassistant.model.OrderViewModel
 
-/**
- * This is the first screen of the Cupcake app. The user can choose how many cupcakes to order.
- */
 class StartFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_start.xml layout
@@ -52,16 +49,13 @@ class StartFragment : Fragment() {
         binding?.startFragment = this
     }
 
-    /**
-     * Start an order with the desired quantity of cupcakes and navigate to the next screen.
-     */
     fun goToLogin() {
-        // Navigate to the next destination to select the flavor of the cupcakes
+        // Navigate to login page
         findNavController().navigate(R.id.action_startFragment_to_loginFragment)
     }
 
     fun goToSignup() {
-        // Navigate to the next destination to select the flavor of the cupcakes
+        // Navigate to signup page
         findNavController().navigate(R.id.action_startFragment_to_signupFragment)
     }
 
