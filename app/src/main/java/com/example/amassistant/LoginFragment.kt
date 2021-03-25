@@ -24,17 +24,24 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.amassistant.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
-/**
- */
+
 class LoginFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_login.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
     private lateinit var binding: FragmentLoginBinding
+    private val mAuth: FirebaseAuth? = null
 
     private val viewModel: LoginViewModel by viewModels()
+
+
+    override fun  onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        FirebaseAuth.getInstance()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +62,12 @@ class LoginFragment : Fragment() {
 
 
     }
+
+//    override fun onStart() {
+//        super.onStart()
+//        val currentUser = mAuth!!.currentUser
+//        mAuth.updateCurrentUser(currentUser)
+//    }
 
     /**
      * Navigate back to start screen.

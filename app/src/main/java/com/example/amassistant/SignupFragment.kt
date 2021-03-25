@@ -16,12 +16,16 @@
 package com.example.amassistant
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.amassistant.databinding.FragmentSignupBinding
+import com.google.firebase.auth.FirebaseAuth
+
 
 /**
  */
@@ -32,6 +36,14 @@ class SignupFragment : Fragment() {
     // when the view hierarchy is attached to the fragment.
     private var binding: FragmentSignupBinding? = null
 
+    private val mAuth: FirebaseAuth? = null
+
+    private val viewModel: SignupViewModel by viewModels()
+
+    override fun  onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        FirebaseAuth.getInstance()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,12 +56,10 @@ class SignupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.apply {
-            // Specify the fragment as the lifecycle owner
-            lifecycleOwner = viewLifecycleOwner
-            // Assign the fragment
-            signupFragment = this@SignupFragment
-        }
+        binding?.signupFragment  = this
+        binding?.lifecycleOwner = viewLifecycleOwner
+        binding?.createAccount?.setOnClickListener{createAccount()}
+
     }
 
     /**
@@ -60,6 +70,13 @@ class SignupFragment : Fragment() {
     }
 
     fun createAccount() {
+        val emailInput = binding?.username?.text.toString()
+        val passwordInput = binding?.password?.text.toString()
+        Log.d("SignupInfo", "Email: ${emailInput}" + "Password: ${passwordInput}")
+        viewModel.createUser(emailInput, passwordInput)
+
+
+
         //Account creation logic here
 
         // Navigate to home screen after submission of account creation details

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "679830759307",
+    "project_id": "amassistant-demoapp",
+    "storage_bucket": "amassistant-demoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679830759307:android:a719947462e593794d318e",
+        "android_client_info": {
+          "package_name": "com.example.amassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679830759307-pkj8r6hm44ia0q21ah4hroomk0s82mv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amassistant",
+            "certificate_hash": "9274d79ee0cef572be666586d4adbb3c4ed08efc"
+          }
+        },
+        {
+          "client_id": "679830759307-dc6kcqgp56n4oero08p5ooqu9g1457er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC6iUeYidJRcXcewtMwtjaur7dCCYbPOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679830759307-dc6kcqgp56n4oero08p5ooqu9g1457er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
